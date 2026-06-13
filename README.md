@@ -1,49 +1,44 @@
-# Proyecto Examen Final - Módulo 3
+# 🚀 Asistente de IA con Arquitectura CAG (Context-Augmented Generation)
+[cite_start]**Estudiante:** Jorge Enrique Archer Rosales  
+[cite_start]**Curso:** Inteligencia Artificial - Examen Final [cite: 12]  
+**Catedrático:** Ing. [cite_start]Richard David Ortiz Sasvin [cite: 21]
 
-Proyecto base para la evaluación práctica del módulo 3. Los requisitos oficiales están en `Enunciado en la serie II de la evaluación final`.
+[cite_start]Proyecto monolítico avanzado que integra un motor de recuperación de conocimiento (RAG) con un sistema de persistencia y aumento de contexto en tiempo de ejecución (CAG) para personalizar la experiencia del usuario de forma dinámica[cite: 72, 74].
 
-## Inicio rápido
+---
 
-1. Abra la carpeta `ProyectoExamen`.
-2. Ejecute las pruebas base.
-3. Levante el backend.
-4. Abra el frontend para revisar el estado inicial.
+## 👨‍✈️ Filosofía de Desarrollo: Piloto y Copiloto
+[cite_start]Este proyecto fue diseñado bajo el principio rector del curso: **"Nosotros somos Tony Stark y la IA es nuestro Jarvis"**[cite: 78]. [cite_start]La IA actuó exclusivamente como un asistente técnico de soporte de código y diagnóstico de entornos bajo mi estricta dirección, toma de decisiones arquitectónicas y diseño estratégico[cite: 79]. [cite_start]Todo el progreso interactivo se encuentra fielmente registrado en el archivo `PROMPTS-REALIZADOS.md`[cite: 81, 95].
 
-## Estructura
+---
 
-| Ruta | Contenido |
+## 📊 Metodología de Trabajo (Scrum)
+[cite_start]El desarrollo se dividió de forma estricta en dos bloques de entrega incremental[cite: 88, 95]:
+
+### 🏃 Sprint 1: Infraestructura de Persistencia e Interfaces del Servidor
+* **Objetivo:** Resolver el error HTTP 501 mediante la activación de endpoints de contexto.
+* **Entregables:** Implementación de la clase `ContextStore` utilizando un almacén indexado en memoria para mapear preferencias de usuarios en pares clave-valor.
+
+### 🏃 Sprint 2: Motor de Generación Aumentada y Cierre
+* [cite_start]**Objetivo:** Integrar el contexto recuperado en el pipeline del generador para alterar las respuestas del modelo según el perfil del usuario, logrando la aprobación del 100% de los contratos de validación[cite: 74, 93].
+
+---
+
+## 🛠️ Arquitectura del Sistema
+
+| Módulo | Descripción / Responsabilidad |
 |---|---|
-| `backend/` | Código del servidor y lógica base del asistente. |
-| `frontend/` | Interfaz web estática para interactuar con el backend. |
-| `data/` | Base de conocimiento inicial del proyecto. |
-| `tests/base/` | Pruebas base que deben pasar desde el inicio. |
-| `tests/validation/` | Pruebas de validación de la entrega final. |
-| `docs/` | Espacio para documentación técnica y evidencias del estudiante. |
+| `backend/server.py` | [cite_start]Servidor HTTP nativo en Python encargado de exponer el API Contract (`/api/ask`, `/api/context`). |
+| `backend/context_store.py` | Componente de persistencia en memoria que gestiona el ciclo de vida del contexto del usuario. |
+| `backend/cag.py` / `assistant.py` | [cite_start]Lógica de negocio del asistente, inyección de contexto persistente y aumento de prompts. |
+| `data/knowledge_base.json` | [cite_start]Base documental estática para la consulta de datos base del RAG[cite: 72, 73]. |
+| `tests/` | [cite_start]Suite automatizada de pruebas unitarias y contratos de software (TDD/BDD)[cite: 76, 92]. |
 
-## Ejecutar pruebas base
+---
 
+## 🚀 Guía de Ejecución
+
+### 1. Ejecutar la Suite de Validación Final (TDD/BDD)
+[cite_start]Para correr las pruebas de integración del contrato CAG, utilice el script automatizado desde una terminal Git Bash[cite: 93, 102]:
 ```bash
-./scripts/run_base_tests.sh
-```
-
-Estas pruebas validan que el proyecto inicial funciona correctamente.
-
-## Ejecutar backend
-
-```bash
-PYTHONPATH=. python3 -m backend.server
-```
-
-El backend queda disponible en `http://127.0.0.1:8000`.
-
-## Abrir frontend
-
-Abra `frontend/index.html` en un navegador. También puede servir la carpeta con un servidor estático local si lo prefiere.
-
-## Validación final
-
-```bash
-./test.sh
-```
-
-En el proyecto base, la validación final está destinada a fallar. Debe utilizarse como autoevaluación cuando el trabajo solicitado en el enunciado esté completo.
+bash test.sh

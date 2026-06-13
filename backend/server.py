@@ -2,11 +2,8 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-from backend.assistant import answer_question
-from backend.context_store import ContextStore
-
-
-context_store = ContextStore()
+# Importamos tanto la función como el almacén de datos desde assistant para mantener consistencia
+from backend.assistant import answer_question, context_store
 
 
 class ExamRequestHandler(BaseHTTPRequestHandler):
